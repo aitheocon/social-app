@@ -56,15 +56,15 @@
       whatsNext: [
         {
           text: 'Posts',
-          href: 'https://vuetifyjs.com/components/api-explorer',
+          href: '../posts',
         },
         {
           text: 'Your Posts',
-          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
+          href: '../myposts',
         },
         {
           text: 'Profile',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
+          href: '../profile',
         },
       ],
     }),
