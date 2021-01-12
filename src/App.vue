@@ -1,34 +1,42 @@
 <template>
-  <v-app>
-    <v-main>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <router-link to="/" class="nav-link">Home</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/posts" class="nav-link">Posts</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/myposts" class="nav-link">My Posts</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/profile" class="nav-link">Profile</router-link>
-        </li>
-      </ul>
-    </v-main>
+<v-container>
     <router-view/>
-  </v-app>
+  </v-container>
 </template>
+
+<template>
+  <v-bottom-navigation
+    :value="value"
+    color="teal"
+    grow
+  >
+    <v-btn>
+      <span>Recents</span>
+
+      <v-icon>mdi-history</v-icon>
+    </v-btn>
+
+    <v-btn>
+      <span>Favorites</span>
+
+      <v-icon>mdi-heart</v-icon>
+    </v-btn>
+
+    <v-btn>
+      <span>Nearby</span>
+
+      <v-icon>mdi-map-marker</v-icon>
+    </v-btn>
+  </v-bottom-navigation>
+</template>
+
 
 <script>
 
 export default {
   name: 'App',
 
+    data: () => ({ value: 1 }),
  
-
-  data: () => ({
-    //
-  }),
 };
 </script>
