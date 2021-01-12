@@ -18,7 +18,7 @@
         <p class="subheading font-weight-regular">
           If you'd like to JUST look, please click
           <a
-            href="https://community.vuetifyjs.com"
+            href="../posts"
             target="_blank"
           >here</a>
         </p>
@@ -31,6 +31,7 @@
         <h2 class="headline font-weight-bold mb-3">
           What's next?
         </h2>
+        <br>
 
         <v-row justify="center">
           <a

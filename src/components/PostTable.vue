@@ -1,11 +1,11 @@
 <template>
   <div>
     <v-text-field
-      label="Main input"
+      label="Title"
       :rules="rules"
       hide-details="auto"
     ></v-text-field>
-    <v-text-field label="Another input"></v-text-field>
+    <v-text-field label="Message"></v-text-field>
     <v-btn
     elevation="2"
     fab
@@ -22,7 +22,7 @@
     data: () => ({
       rules: [
         value => !!value || 'Required.',
-        value => (value && value.length >= 3) || 'Max 500 characters',
+        value => (value && value.length <= 500) || 'Max 500 characters',
       ],
     }),
   }
