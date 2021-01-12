@@ -1,5 +1,17 @@
 <template>
   <div class="posts">
-    <h1>This is the posts page</h1>
+    <ProfilePage msg = "This is the profile page"/>
   </div>
 </template>
+
+<script>
+
+import ProfilePage from '@/components/ProfilePage.vue'
+
+export default {
+  name: 'Profile',
+  components: {
+    ProfilePage
+  }
+}
+</script>
