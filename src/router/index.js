@@ -5,7 +5,12 @@ import Posts from '../views/Posts.vue'
 import Profile from '../views/Profile.vue'
 import MyPosts from '../views/MyPosts.vue'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+
+import VueAxios from 'vue-axios';
+import axios from 'axios';
+
+Vue.use(VueAxios, axios);
 
 const routes = [
   {
