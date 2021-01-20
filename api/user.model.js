@@ -5,6 +5,12 @@ const Schema = mongoose.Schema;
 let User = new Schema({
   username: {
     type: String
+  },
+  email: {
+    type: String
+  },
+  phone: {
+    type: String
   }
 },{
     collection: 'users'

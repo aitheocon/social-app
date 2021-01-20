@@ -6,8 +6,9 @@ let Post = require('./post.model');
 
 // Defined store route
 postRoutes.route('/add').post(function (req, res) {
-  let post = new Post(req.body);
-  post.save()
+  let p = new Post(req.body);
+  console.log(req.body);
+  p.save()
     .then(() => {
       res.status(200).json({'business': 'business in added successfully'});
     })
@@ -59,10 +60,10 @@ postRoutes.route('/update/:id').post(function (req, res) {
 
 // Defined delete | remove | destroy route
 postRoutes.route('/delete/:id').delete(function (req, res) {
-    Post.findByIdAndRemove({_id: req.params.id}, function(err){
-        if(err) res.json(err);
-        else res.json('Successfully removed');
-    });
+  Post.findByIdAndRemove({_id: req.params.id}, function(err){
+      if(err) res.json(err);
+      else res.json('Successfully removed');
+  });
 });
 
 module.exports = postRoutes;

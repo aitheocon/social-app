@@ -5,7 +5,7 @@
     lazy-validation
   >
     <v-text-field
-      v-model="name"
+      v-model="users.username"
       :counter="10"
       :rules="nameRules"
       label="Username"
@@ -13,14 +13,14 @@
     ></v-text-field>
 
     <v-text-field
-      v-model="email"
+      v-model="users.email"
       :rules="emailRules"
       label="E-mail"
       required
     ></v-text-field>
 
     <v-text-field
-      v-model="phone"
+      v-model="users.phone"
       :rules="phoneRules"
       label="Phone"
       required
@@ -37,7 +37,7 @@
       :disabled="!valid"
       color="success"
       class="mr-4"
-      @click="validate"
+      @click="updateUser"
     >
       Save Changes
     </v-btn>
@@ -50,12 +50,6 @@
       Clear Changes
     </v-btn>
 
-    <v-btn
-      color="warning"
-      @click="resetValidation"
-    >
-      Reset Validation
-    </v-btn>
   </v-form>
 </template>
 
@@ -82,6 +76,13 @@
         v => (v && v.length == 10) || 'Phone must be valid and unbroken',
       ],
       checkbox: false,
+
+      created() {
+      let uri = 'http://localhost:4000/users';
+      this.axios.get(uri).then(response => {
+        this.users = response.data;
+      });
+    },
     }),
 
     methods: {
@@ -94,6 +95,12 @@
       resetValidation () {
         this.$refs.form.resetValidation()
       },
+      updateUser() {
+          let uri = `http://localhost:4000/users/update/${this.$route.params.id}`;
+          this.axios.post(uri, this.user).then(() => {
+            this.$router.push({name: 'Posts'});
+          });
+        }
     },
   }
 </script>

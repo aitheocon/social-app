@@ -9,47 +9,62 @@
       dark
     >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <v-toolbar-title>Posts</v-toolbar-title>
+
+      <v-toolbar-title>Inbox</v-toolbar-title>
+
       <v-spacer></v-spacer>
+
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
     </v-toolbar>
+
     <v-list three-line v-for="post in posts" :key="post._id">
-        <v-divider
-          v-if= true
-          :key="index"
-          :inset= true
-        ></v-divider>
+        <v-subheader
+          v-if="post.author"
+          :key="post.author"
+          v-text="post.author"
+        ></v-subheader>
+
+        <v-divider></v-divider>
 
         <v-list-item
-          v-else
           :key="post.title"
         >
-        
+
           <v-list-item-content>
             <v-list-item-title v-html="post.title"></v-list-item-title>
-            <v-list-item-subtitle> {{ post.body }} </v-list-item-subtitle>
+            <v-list-item-subtitle v-html="post.body"></v-list-item-subtitle>
           </v-list-item-content>
+          <td><button v-on:click="deletePost(post._id)" class="btn btn-danger">Delete</button></td>
         </v-list-item>
     </v-list>
   </v-card>
   <form @submit.prevent="addPost">
     <v-text-field
-      label="Title"
-      :rules="rules"
-      hide-details="auto"
       v-model="p.title"
+      :counter="10"
+      label="Title"
+      required
     ></v-text-field>
-    <v-text-field label="Message" v-model="p.body"></v-text-field>
+    <v-text-field
+      v-model="p.body"
+      label="Message"
+      required
+    ></v-text-field>
+    <v-text-field
+      v-model="p.author"
+      label="Author"
+      required
+    ></v-text-field>
+    
     <v-btn
-    class="form-group"
-    elevation="2"
-    fab
+      class="mr-4"
+      @click="addPost"
     >
-    <v-icon>mdi-plus</v-icon>
+      submit
     </v-btn>
-    </form>
+  </form>
   </div>
 </template>
 
@@ -76,9 +91,16 @@
    addPost(){
     let uri = 'http://localhost:4000/posts/add';
     this.axios.post(uri, this.p).then(() => {
-       this.$router.push({name: 'posts'});
+       this.$router.push({name: 'Posts'});
         });
-      }
-    }
+      },
+      deletePost(id) {
+      let uri = 'http://localhost:4000/posts/delete/${id}';
+      this.axios.delete(uri).then((response) => {
+        this.posts = this.posts.filter((r) => r._id != id);
+        console.log(response.data);
+      });
+    },
+  }
   }
 </script>

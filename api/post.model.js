@@ -8,6 +8,9 @@ let Post = new Schema({
   },
   body: {
     type: String
+  },
+  author: {
+    type: String
   }
 },{
     collection: 'posts'
