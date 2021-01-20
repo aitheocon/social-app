@@ -63,6 +63,8 @@
 <script>
   export default {
     data: () => ({
+        users: {}
+      ,
       valid: true,
       name: '',
       nameRules: [

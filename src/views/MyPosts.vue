@@ -9,7 +9,7 @@
 import PostTable from '@/components/PostTable.vue'
 
 export default {
-  name: 'MyPosts',
+
   components: {
     PostTable
   }
