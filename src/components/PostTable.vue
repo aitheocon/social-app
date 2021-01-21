@@ -74,8 +74,7 @@
 
     data: () => ({
       posts: {},
-      p: {}
-    ,
+      p: {},
      rules: [
         value => !!value || 'Required.',
         value => (value && value.length <= 500) || 'Max 500 characters',
